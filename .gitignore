@@ -1,0 +1,26 @@
+*.pt
+*.safetensors
+FineTuneFoodHazard/wandb/
+**/__pycache__/
+*.zip
+FineTuneFoodHazard/logs/
+FineTuneFoodHazard/models/
+submission/
+*chroma_db
+KnowledgeAugmentedData/config.ini
+*.sql
+*.db
+*datasets
+*chroma_BioRed_db/
+*.tsv
+*.pyc
+*cpython*
+*.json
+KnowledgeAugmentedData/backend/
+KnowledgeAugmentedData/backend/*
+# config/config.yaml
+KnowledgeAugmentedData/vector_database/
+KnowledgeAugmentedData/database/
+KnowledgeAugmentedData/.env
+KnowledgeAugmentedData/export_env.sh
+KnowledgeAugmentedData/db_path/

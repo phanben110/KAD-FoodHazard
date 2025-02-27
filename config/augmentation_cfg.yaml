@@ -1,0 +1,57 @@
+env: 
+  langchain:
+    LANGCHAIN_TRACING_V2: "false"
+    LANGCHAIN_API_KEY: "..."
+    LANGCHAIN_PROJECT: GPT4o-mini-azure 
+  ollama:
+    OLLAMA_HOST: "192.168......:1998"
+    OLLAMA_NUM_PARALLEL: "100"
+    OLLAMA_DEBUG: "2"
+    OLLAMA_HOST_EMBEDDING: "192.168......:1998"  
+  azure_openai:
+    AZURE_ENDPOINT: "..."
+    AZURE_OPENAI_API_KEY: "..."
+  mistral:
+    MISTRAL_API_KEY: "..."
+  google_genai:
+    GOOGLE_API_KEY: "..."
+  ncbi_api:
+  # https://account.ncbi.nlm.nih.gov/settings/ 
+    NCBI_API_KEY: "..."  
+
+pipeline:
+  llm:
+    model: LLAMA3_8B  # Default model to be used
+    models:
+      LLAMA3_8B: "llama3.1:8b"
+      LLAMA3_70B: "llama3.1:70b"
+      GPT_35_TURBO: "gpt-35-turbo"
+      GPT_4: "gpt-4o-mini-2000"
+      MIXTRAL: "mixtral"
+      GEMINI: "gemini-2.0-flash"
+  
+  log: 
+    path: "backend/logs/AugLLms_Log.log"  # Path to save logs
+
+  database:
+    dataset_list: ["...","..."]
+    path: "vector_database/chroma_SemEval_db"  # Path to the retrieval database
+    collection_name: "SemEval"
+  
+  pubmed_retrieval:
+    path_database: "backend/chromadb_storage"
+    storage_path: "backend/data"
+  
+  tasks: 
+    SemEval_2025_task9:
+      data_path: "KnowledgeAugmentedData/datasets/SemEval_2025_task9/Orignal/incidents_train.csv"  # Path to SemEval_2013_task9 dataset
+      output_path: "datasets"  # Path to save augmented data
+      batch_size: 5
+      pipeline_type: 2 # 1: without RAG, 2: with RAG, 3: with RAG and API pubmed
+      merger_config:
+        original_data_file: "KnowledgeAugmentedData/datasets/SemEval_2025_task9/datasets/SemEval_2025_task9/Orignal/incidents_train.csv"  # Original data file path for SemEval_2013_task9
+        dir_augmentation_data: "KnowledgeAugmentedData/datasets/SemEval_2025_task9/datasets/SemEval_2025_task9/augmentation_RAG_llama3.1:8b"
+        matching_threshold: 1
+        evaluation_threshold: 3
+        auto_correct: false
+        path_output_save: "FineTuneFoodHazard/data/augmentation_llama3.1:8b.csv"  # Output save path for SemEval_2013_task9 

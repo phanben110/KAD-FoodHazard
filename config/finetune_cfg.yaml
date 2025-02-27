@@ -1,0 +1,49 @@
+common: 
+  data_path: "data/incidents_train.csv"
+  bert_model_name: microsoft/BiomedNLP-BiomedBERT-large-uncased-abstract
+  max_len: 512
+  batch_size: 16
+  # batch_size: 90
+  epochs: 300
+  learning_rate: 0.000005
+  test_size: 0.2
+  random_state: 2024
+  logs_folder: "logs"
+  wandb_project_name: "Thesis_SemEval_2025_Task9"
+
+tasks:  # Cấu hình cho từng task
+  ST1:  # Subtask 1
+    hazard-category: 
+      wandb_run_name: "st1_hazard_category_aug_lamma3.1_large_v16"
+      label_column: "hazard-category"
+      pretrained_model_path: "models/ST1/hazard_category/st1_hazard_category_pretrained.pt"
+      out_model_path: "models/ST1/hazard_category"
+    product-category:
+      wandb_run_name: "st1_product_category_aug_lamma3.1_large_v16"
+      label_column: "product-category"
+      pretrained_model_path: "models/ST1/product_category/st1_product_category_pretrained.pt"
+      out_model_path: "models/ST1/product_category"
+
+  ST2:  # Subtask 2
+    hazard:
+      wandb_run_name: "st2_hazard_aug_llamma31_large_v5"
+      label_column: "hazard"
+      pretrained_model_path: "models/ST2/hazard/st2_hazard_pretrained.pt"
+      out_model_path: "models/ST2/hazard"
+
+    product:
+      wandb_run_name: "st2_product_aug_llamma31_large_v5"
+      label_column: "product"
+      pretrained_model_path: "models/ST2/product/st2_product_pretrained.pt"
+      out_model_path: "models/ST2/product"
+
+run:  # Chọn các task/subtask cần chạy
+  - task: "ST1"
+    subtasks:
+      - "hazard-category"
+      - "product-category"
+
+  - task: "ST2"
+    subtasks:
+      - "hazard"
+      - "product"
