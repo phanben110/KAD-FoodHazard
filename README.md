@@ -45,9 +45,6 @@ cd KAD-FoodHazard
 
 # Install KnowledgeAugmentedData environment
 conda env create -f augLLMs.yml
-
-# Install FineTuneFoodHazard environment
-conda env create -f biored.yml
 ```
 
 ### 🛠 **Step 2: Install Ollama**
