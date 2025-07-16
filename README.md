@@ -101,7 +101,15 @@ Once the augmented data is ready, fine-tune models for food hazard detection.
    python main.py --config ./../config/finetune_cfg.yaml
    ```
 
+## Demo
+
+💻 **Watch our system in action**: [YouTube Demo](https://www.youtube.com/watch?v=lWsnHEVbFig)
+
 ## Authors
 
-- **Ben Phan**, NCKU
-- **Jung-Hsien Chiang**, NCKU 
+- **[Ben Phan](https://phanben110.github.io/)**  
+  Master in Computer Science at National Cheng Kung University.
+
+- **[Jung-Hsien Chiang](https://www.csie.ncku.edu.tw/en/members/18)**  
+  Distinguished Professor at the Department of Computer Science and Information Engineering, NCKU.
+
